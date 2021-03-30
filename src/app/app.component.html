@@ -1,0 +1,28 @@
+
+<div id="cont">
+  <div id="menu-fixed">
+    <a href="#cont">
+      <i class="material-icons back">&#xE314;</i>
+    </a>
+    <a href="#menu-fixed">
+      <div class="logo">
+        <span></span>   
+        <p>TITLE</p>
+      </div>
+      <p class="pmenu">MENU</p>
+    </a>
+    <hr>
+    <ul class="menu">
+      <li (click)="toggleMicroOne()"><i class="material-icons">&#xE88A;</i><p>One</p></li>
+      <li (click)="toggleMicroTwo()"><i class="material-icons">&#xE87A;</i><p>Two</p></li>
+      <li (click)="toggleMicroThree()"><i class="material-icons">&#xE87A;</i><p>Three</p></li>
+      <li (click)="toggleMicroFour()"><i class="material-icons">&#xE87A;</i><p>Four</p></li>
+      <li (click)="toggleMicroFive()"><i class="material-icons">&#xE87A;</i><p>Five</p></li>
+    </ul>
+    <i class="material-icons info">&#xE88E;</i>
+  </div>
+  </div>
+  
+  <div id="page">
+    <div [innerHTML]="toShow"></div>
+  </div>
