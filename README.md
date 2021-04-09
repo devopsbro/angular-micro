@@ -10,17 +10,23 @@ Just install nginx and docker in the ubuntu server.
 
 #Install Docker and add the current user to docker group
 `sudo apt-get -y  update && curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh`
+
 `sudo usermod -aG docker $USER`
 
-#Install docker-compose and give file permission to execute
+#Install docker-compose and give file permission to execute 
 `sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose`
+
 `sudo chmod +x /usr/bin/docker-compose`
 
 Then change the nginx default file under path /etc/nginx/sites-enabled/default to this
 
-START OF FILE ---------------
+then edit the nginx file 
 
-`server {
+sudo nano /etc/nginx/sites-enabled/default
+
+START OF FILE ---------------
+`
+server {
 
         listen 80;
         listen [::]:80;
@@ -30,7 +36,7 @@ location / {
         proxy_pass http://127.0.0.1:4200;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_http_version 1.1;
@@ -40,3 +46,14 @@ location / {
 `
 
 -----------   END OF FILE
+
+After changing the nginx config file, restart the nginx
+sudo service nginx restart
+
+Git  clone the code repository
+https://github.com/devopsbro/angular-micro
+
+cd angular-micro
+Then docker-compose up the container
+
+sudo docker-compose up -d
