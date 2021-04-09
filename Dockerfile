@@ -27,5 +27,5 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /ui/dist /usr/share/nginx/html
 RUN ls -la /usr/share/nginx/html
 
-EXPOSE 81
+EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
