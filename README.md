@@ -10,7 +10,7 @@ Just install nginx and docker in the ubuntu server.
 
 #Install Docker and add the current user to docker group
 `sudo apt-get -y  update && curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh`
-`sudo useradd -aG docker $USER`
+`sudo usermod -aG docker $USER`
 
 #Install docker-compose and give file permission to execute
 `sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose`
